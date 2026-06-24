@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GSAIS</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="watermark"></div>
+  <div class="header">
+    <h1>GSA Intelligence Suite</h1>
+  </div>
+  
+  <div class="section challenge-info">
+    <div class="label">Challenge Slug</div>
+    <div class="value" id="challenge-slug">Detecting...</div>
+  </div>
+
+  <div class="section page-range">
+    <div class="label">Page Range</div>
+    <div class="range-inputs">
+      <input type="number" id="start-page" placeholder="Start (e.g. 0)" min="0" value="0">
+      <span class="separator">to</span>
+      <input type="number" id="end-page" placeholder="End (e.g. 10)" min="0" value="10">
+    </div>
+  </div>
+
+  <div class="section actions">
+    <button id="scan-btn" class="primary-btn">Scan Range</button>
+    <button id="full-scan-btn" class="primary-btn" style="background-color: rgb(66, 128, 251);">Full Scan</button>
+  </div>
+  <div class="section export-options">
+    <div class="label">Export Filename</div>
+    <div class="range-inputs" style="margin-bottom: 10px;">
+      <input type="text" id="export-filename" placeholder="gsa-export" value="gsa-export">
+      <span class="separator" style="white-space: nowrap;">.json</span>
+    </div>
+    <div class="actions" style="border: none; padding: 0; background: transparent; backdrop-filter: none; box-shadow: none;">
+      <button id="export-btn" class="secondary-btn" disabled>Export JSON</button>
+    </div>
+  </div>
+
+  <div class="section stats">
+    <div class="stat-row">
+      <span>Total Submissions</span>
+      <span id="stat-total" class="stat-value">0</span>
+    </div>
+    <div class="stat-row">
+      <span class="status-approved">Approved</span>
+      <span id="stat-approved" class="stat-value">0</span>
+    </div>
+    <div class="stat-row">
+      <span class="status-rejected">Rejected</span>
+      <span id="stat-rejected" class="stat-value">0</span>
+    </div>
+    <div class="stat-row">
+      <span>Win Rate</span>
+      <span id="stat-winrate" class="stat-value">0%</span>
+    </div>
+  </div>
+  
+  <div id="status-message"></div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

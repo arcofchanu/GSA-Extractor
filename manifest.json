@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "Gray Swan Arena Intelligence Suite",
+  "version": "1.0",
+  "description": "Extracts and exports submissions from Gray Swan Arena.",
+  "icons": {
+    "16": "assets/icon.png",
+    "48": "assets/icon.png",
+    "128": "assets/icon.png"
+  },
+  "permissions": [
+    "activeTab",
+    "storage",
+    "downloads"
+  ],
+  "host_permissions": [
+    "https://app.grayswan.ai/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "assets/icon.png",
+      "48": "assets/icon.png",
+      "128": "assets/icon.png"
+    }
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

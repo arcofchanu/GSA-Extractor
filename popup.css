@@ -1,0 +1,216 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg-color: #000000;
+  --panel-bg: transparent;
+  --text-main: rgba(255, 255, 255, 0.92);
+  --text-muted: rgba(238, 238, 239, 0.85);
+  --primary: rgba(255, 255, 255, 0.88);
+  --primary-hover: rgba(228, 228, 231, 0.92);
+  --primary-text: #000000;
+  --approved: #00ff5e;
+  --rejected: #ff0000;
+  --border: rgba(255, 255, 255, 0.08);
+  --glass-blur: 16px;
+}
+
+body {
+  width: 340px;
+  margin: 0;
+  padding: 16px;
+  background-color: var(--bg-color);
+  color: var(--text-main);
+  font-family: 'Outfit', sans-serif;
+  position: relative;
+  overflow: hidden;
+  z-index: 0;
+}
+
+/* Background glowing orbs to make the glass effect visible */
+body::before {
+  content: "";
+  position: absolute;
+  top: -30px;
+  right: -30px;
+  width: 200px;
+  height: 200px;
+  background: rgba(0, 98, 255, 0.25); /* Soft blue */
+  filter: blur(50px);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+body::after {
+  content: "";
+  position: absolute;
+  bottom: 50px;
+  left: -40px;
+  width: 150px;
+  height: 150px;
+  background: rgba(97, 23, 118, 0.25); /* Soft green */
+  filter: blur(45px);
+  z-index: -1;
+  border-radius: 50%;
+}
+
+h1 {
+  font-size: 1.1rem;
+  margin: 0 0 16px 0;
+  font-weight: 500;
+  color: var(--text-main);
+  text-align: center;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+
+.section {
+  background: var(--panel-bg);
+  backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+  border: 1px solid var(--border);
+  border-radius: 0;
+  padding: 14px;
+  margin-bottom: 12px;
+  box-shadow: none;
+}
+
+.label {
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 6px;
+}
+
+.value {
+  font-size: 0.95rem;
+  font-weight: 400;
+  word-break: break-all;
+  color: var(--text-main);
+}
+
+.range-inputs {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+input[type="number"],
+input[type="text"] {
+  width: 100%;
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--text-main);
+  padding: 8px;
+  border-radius: 0;
+  font-family: 'Outfit', sans-serif;
+  font-size: 0.9rem;
+  transition: border-color 0.2s;
+  backdrop-filter: blur(8px);
+}
+
+input[type="number"]:focus,
+input[type="text"]:focus {
+  outline: none;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.separator {
+  color: var(--text-muted);
+  font-size: 0.8rem;
+}
+
+.actions {
+  display: flex;
+  gap: 10px;
+  background: transparent;
+  border: none;
+  padding: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+}
+
+button {
+  flex: 1;
+  padding: 10px;
+  border-radius: 0;
+  border: none;
+  font-weight: 500;
+  font-family: 'Outfit', sans-serif;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.primary-btn {
+  background-color: var(--primary);
+  color: var(--primary-text);
+  backdrop-filter: blur(8px);
+}
+
+.primary-btn:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+}
+
+.secondary-btn {
+  background-color: transparent;
+  color: var(--text-main);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(10px);
+}
+
+.secondary-btn:hover:not(:disabled) {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+button:disabled {
+  opacity: 0.3;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.stat-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.stat-value {
+  font-weight: 500;
+  color: var(--text-main);
+}
+
+.status-approved { color: var(--approved); }
+.status-rejected { color: var(--rejected); }
+
+#status-message {
+  font-size: 0.8rem;
+  text-align: center;
+  color: var(--text-muted);
+  margin-top: 12px;
+  min-height: 16px;
+  font-weight: 300;
+}
+
+.watermark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('assets/bg.png');
+  background-repeat: no-repeat;
+  background-position: calc(50% + 50px) center;
+  transform: scale(1);
+  opacity: 0.1;
+  z-index: 1;
+  pointer-events: none;
+}
