@@ -27,11 +27,12 @@ This extension is the data-collection engine of the **Gray Swan Arena Intelligen
 
 ## 🛠️ Installation
 
-1. Open Google Chrome and navigate to `chrome://extensions/`.
-2. Enable **Developer mode** using the toggle switch in the top right corner.
-3. Click **Load unpacked**.
-4. Select this `extension` folder.
-5. *Tip:* Pin the extension to your browser toolbar for quick access!
+1. Put the all file is your own deignated folder with the name of your choice
+2. Open Google Chrome and navigate to `chrome://extensions/`.
+3. Enable **Developer mode** using the toggle switch in the top right corner.
+4. Click **Load unpacked**.
+5. Select this `extension` folder.
+6. *Tip:* Pin the extension to your browser toolbar for quick access!
 
 ---
 
