@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', () => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     if (tabs && tabs[0]) {
       const url = tabs[0].url;
-      const match = url.match(/challenge\/([^/]+)\/submissions/);
+      const match = url.match(/challenge\/([^/?]+)(?:\/submissions|\?modal=chats)/);
       if (match && match[1]) {
         currentSlug = match[1];
         challengeSlugEl.textContent = currentSlug;
