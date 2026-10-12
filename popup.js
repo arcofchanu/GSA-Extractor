@@ -62,8 +62,8 @@ document.addEventListener('DOMContentLoaded', () => {
   chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
     if (tabs && tabs[0]) {
       const url = tabs[0].url;
-      // Match both old /submissions URL and new ?modal=chats URL
-      const match = url.match(/challenge\/([^/?]+)(?:\/submissions|\?modal=chats)/);
+      // Match any challenge page URL — slug is all we need for the API
+      const match = url.match(/\/challenge\/([^/?#]+)/);
       if (match && match[1]) {
         currentSlug = match[1];
         challengeSlugEl.textContent = currentSlug;
@@ -212,12 +212,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
           total++;
 
-          // ── Determine status from API fields ──
+          // ── Determine status from API fields (layered fallback) ──
           let status = 'unknown';
           if (sub.grade_status === 'success' || sub.successful === true) {
             status = 'approved';
             approved++;
           } else if (sub.grade_status === 'fail' || sub.successful === false) {
+            status = 'rejected';
+            rejected++;
+          } else if (sub.grading?.is_break === true || sub.severity?.judge_result?.is_break === true) {
+            status = 'approved';
+            approved++;
+          } else if (sub.grading?.is_break === false || sub.severity?.judge_result?.is_break === false) {
             status = 'rejected';
             rejected++;
           }
